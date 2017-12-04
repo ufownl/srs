@@ -961,7 +961,7 @@ public:
      * @stream_name, output the client publish/play stream name. @see: SrsRequest.stream
      * @duration, output the play client duration. @see: SrsRequest.duration
      */
-    virtual int identify_client(int stream_id, SrsRtmpConnType& type, std::string& stream_name, double& duration);
+    virtual int identify_client(int stream_id, SrsRtmpConnType& type, std::string& stream_name, double& duration, std::string& param);
     /**
      * set the chunk size when client type identified.
      */
@@ -1033,12 +1033,12 @@ public:
         return protocol->expect_message<T>(pmsg, ppacket);
     }
 private:
-    virtual int identify_create_stream_client(SrsCreateStreamPacket* req, int stream_id, SrsRtmpConnType& type, std::string& stream_name, double& duration);
-    virtual int identify_fmle_publish_client(SrsFMLEStartPacket* req, SrsRtmpConnType& type, std::string& stream_name);
-    virtual int identify_haivision_publish_client(SrsFMLEStartPacket* req, SrsRtmpConnType& type, std::string& stream_name);
-    virtual int identify_flash_publish_client(SrsPublishPacket* req, SrsRtmpConnType& type, std::string& stream_name);
+    virtual int identify_create_stream_client(SrsCreateStreamPacket* req, int stream_id, SrsRtmpConnType& type, std::string& stream_name, double& duration, std::string& param);
+    virtual int identify_fmle_publish_client(SrsFMLEStartPacket* req, SrsRtmpConnType& type, std::string& stream_name, std::string& param);
+    virtual int identify_haivision_publish_client(SrsFMLEStartPacket* req, SrsRtmpConnType& type, std::string& stream_name, std::string& param);
+    virtual int identify_flash_publish_client(SrsPublishPacket* req, SrsRtmpConnType& type, std::string& stream_name, std::string& param);
 private:
-    virtual int identify_play_client(SrsPlayPacket* req, SrsRtmpConnType& type, std::string& stream_name, double& duration);
+    virtual int identify_play_client(SrsPlayPacket* req, SrsRtmpConnType& type, std::string& stream_name, double& duration, std::string& param);
 };
 
 /**

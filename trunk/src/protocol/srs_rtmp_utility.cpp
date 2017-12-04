@@ -287,3 +287,18 @@ int srs_write_large_iovs(ISrsProtocolReaderWriter* skt, iovec* iovs, int size, s
     return ret;
 }
 
+extern void srs_stream_name_resolve(string& stream_name, string& param)
+{
+    size_t pos = stream_name.find('?');
+    if (pos != string::npos) {
+        if (param.empty()) {
+            param = stream_name.substr(pos);
+        } else {
+            string tmp = stream_name.substr(pos);
+            tmp[0] = '&';
+            param += tmp;
+        }
+        stream_name.erase(pos);
+    }
+}
+

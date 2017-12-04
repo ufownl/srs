@@ -429,7 +429,7 @@ int SrsRtmpConn::stream_service_cycle()
     int ret = ERROR_SUCCESS;
         
     SrsRtmpConnType type;
-    if ((ret = rtmp->identify_client(res->stream_id, type, req->stream, req->duration)) != ERROR_SUCCESS) {
+    if ((ret = rtmp->identify_client(res->stream_id, type, req->stream, req->duration, req->param)) != ERROR_SUCCESS) {
         if (!srs_is_client_gracefully_close(ret)) {
             srs_error("identify client failed. ret=%d", ret);
         }

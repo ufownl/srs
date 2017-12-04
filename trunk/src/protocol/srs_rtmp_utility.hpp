@@ -112,5 +112,7 @@ extern std::string srs_generate_stream_url(std::string vhost, std::string app, s
 // write large numbers of iovs.
 extern int srs_write_large_iovs(ISrsProtocolReaderWriter* skt, iovec* iovs, int size, ssize_t* pnwrite = NULL);
 
+extern void srs_stream_name_resolve(std::string& stream_name, std::string& param);
+
 #endif
 
